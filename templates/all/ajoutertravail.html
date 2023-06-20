@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="signup-container">
+        <h1>Ajouter Un Travail</h1>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="text" name="name" id="name" placeholder="Description De Travail">
+            <input type="text" name="desc" id="desc" placeholder="Description">
+            <input type="datetime-local" name="date" id="date" placeholder="Date Limite">
+
+           <select id="classe" name="classe">
+                {% for classe in classes %}
+                <option value="{{ classe.id }}">{{ classe.name }}</option>
+                {% endfor %}
+          </select>
+        
+            <input type="file" name="file" id="file" placeholder="Ajouter Fichier">
+            <button type="submit" class="btn">Ajouter</button>
+        </form>
+    </div>
+
+{% endblock content %}

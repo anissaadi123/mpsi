@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="home-first">
+        <div class="h-f-left">
+            <div class="h-f-left-bring">
+                <h1>Bienvenue sur Travaux ESI</h1>
+               <p>Travaux Esi est une plateforme de suivi des délais des travaux étudiants offre un environnement collaboratif pour les enseignants et les étudiants de l'ESI, facilitant la gestion du temps, la collaboration et l'amélioration de la productivité.</p>
+                <div class="h-t-l-btns">
+                    <button type="submit" class="btn"><a href="#">parcourir les travaux</a></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="h-f-right">        
+            <img src="{% static 'images/bg.jpg' %}" alt="bgimage">
+        </div>  
+    </div>
+
+   
+    
+{% endblock content %}

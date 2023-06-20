@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="home-second">
+            <h1>Mes Travaux</h1>
+            {% if is_ens %}
+            <button type="submit" class="btn"><a href={% url 'app:ajoutertravail' %}>Ajouter Un Travail</a></button>
+            {% endif %}
+            <div class="travaux">
+                {% for tr in travaux %}
+                <div class="travail">
+                    <div class="travail-left">
+                        <a href={% url 'app:travail_details' tr.pk %}><h3>{{tr.titre}}</h3></a>
+                        <p>{{tr.enseignant.user.username|capfirst}}</p>
+                    </div>
+                    <div class="travail-right">
+                        <p>{{tr.date_limite|date:'Y-m-d'}}</p>
+                        <p>{{tr.date_limite|time:'h:i A' }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+    </div>
+
+{% endblock content %}

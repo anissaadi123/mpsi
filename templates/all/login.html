@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="login-container">
+        <h1>S'authentifier</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+
+            <input type="text" name="email" id="email" placeholder="username">
+            <input type="password" name="password" id="password" placeholder="Mot de Passe">
+             <button type="submit" class="btn">Login</button>
+             {% if error_message %}
+             <p>{{error_message}}</p>
+             {% endif %}
+        </form>
+        <p>Vous n’avez pas un compte ?<a href={% url 'app:signup' %} style="color: darkgoldenrod;"> Créer un maintenant</a> </p>
+    </div>
+
+{% endblock content %}

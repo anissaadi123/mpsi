@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="signup-container">
+        <h1>Créer Un Compte</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="text" name="name" id="name" placeholder="Prénom">
+            <input type="text" name="surname" id="surname" placeholder="Nom">
+            <input type="email" name="email" id="email" placeholder="email">
+
+            <input type="text" name="classe" id="classe" placeholder="classe">
+       
+               <p style="display: inline;"> Je suis un enseignant</p>
+               <input type="checkbox" id="teacherCheckbox" name="teacherCheckbox">
+    
+        
+            <input type="password" name="password" id="password" placeholder="Mot de Passe">
+            <button type="submit" class="btn">Créer</button>
+        </form>
+        <p>Vous avez déja un compte ? <a href="{% url 'app:login'%}"  style="color: darkgoldenrod;">Login</a></p>
+    </div>
+
+{% endblock content %}

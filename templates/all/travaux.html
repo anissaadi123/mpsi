@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="home-second">
+            <h1>Les Travaux</h1>
+            <div class="recherche">
+                <h3>Recherche Par Classe:</h3>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <select id="classe" name="classe" class="btn">
+                        {% for classe in classes %}
+                        <option value="{{ classe.name }}">{{ classe.name }}</option>
+                        {% endfor %}
+                        <option value="all">Toutes Les classes</option>
+                  </select>
+                    <button type="submit" class="btn" style="cursor: pointer;">Filtrer</button>
+                </form>
+            </div>
+            <p>Ils existent {{travaux|length}} Travaux courants pour cette classe</p>
+            <div class="travaux">
+                {% for tr in travaux %}
+                <div class="travail">
+                    <div class="travail-left">
+                        <a href={% url 'app:travail_details' tr.pk %}> <h3>{{tr.titre}}</h3></a>
+                        <p>{{tr.enseignant.user.username|capfirst}}</p>
+                    </div>
+                    <div class="travail-right">
+                        <p>{{tr.date_limite|date:'Y-m-d'}}</p>
+                        <p>{{tr.date_limite|time:'h:i A' }}</p>
+                    </div>
+                </div>
+
+                
+                {% endfor %}
+            </div>
+    </div>
+
+{% endblock content %}
